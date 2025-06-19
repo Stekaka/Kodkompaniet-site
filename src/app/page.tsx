@@ -7,6 +7,7 @@ import ProcessSection from '@/components/ProcessSection'
 import ContactSection from '@/components/ContactSection'
 import PortfolioSection from '@/components/PortfolioSection'
 import SpacePortalSectionV2 from '@/components/SpacePortalSectionV2'
+import HamburgerMenu from '@/components/HamburgerMenu'
 
 export default function Home() {
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function Home() {
 
   return (
     <div className="relative">
+      <HamburgerMenu />
       <div className="relative z-10">
         <HeroSection />
         <SpacePortalSectionV2 />

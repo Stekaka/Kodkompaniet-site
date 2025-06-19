@@ -1,4 +1,4 @@
-// SpacePortalSectionV2.tsx – förbättrad version med fungerande scroll, fullskärm och 3D-effekt
+// SpacePortalSectionV2.tsx – förbättrad version med mobilfix och bibehållen desktop-effekt
 'use client'
 
 import { Canvas } from '@react-three/fiber'
@@ -19,6 +19,8 @@ export default function SpacePortalSectionV2() {
   const [progress, setProgress] = useState(0)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
   useEffect(() => {
     const handleScroll = () => {
       if (!wrapperRef.current) return
@@ -38,14 +40,22 @@ export default function SpacePortalSectionV2() {
   }, [])
 
   const textOpacity = lerp(progress, [0, 0.08, 0.18, 0.35, 0.5], [0, 0.7, 1, 1, 0])
-  const textScale = lerp(progress, [0, 0.08, 0.18, 0.35, 0.5], [0.05, 0.3, 1, 2, 6])
-  const textZ = lerp(progress, [0, 0.15, 0.4, 0.6, 1], [-1200, -200, 0, 400, 1200])
+  const textScale = lerp(
+    progress,
+    [0, 0.08, 0.18, 0.35, 0.5],
+    isMobile ? [0.2, 0.6, 1.2, 1.8, 2.4] : [0.05, 0.3, 1, 2, 6]
+  )
+  const textZ = lerp(
+    progress,
+    [0, 0.15, 0.4, 0.6, 1],
+    isMobile ? [-300, -100, 0, 200, 500] : [-1200, -200, 0, 400, 1200]
+  )
 
   return (
     <section
       className="relative"
       style={{
-        minHeight: '120vh', // eller mer om det behövs
+        minHeight: isMobile ? '160vh' : '120vh',
         background: 'linear-gradient(to bottom, #0a0a1a 0%, #18181b 60%, #000 100%)',
       }}
     >
@@ -53,7 +63,7 @@ export default function SpacePortalSectionV2() {
         ref={wrapperRef}
         className="spaceportal-section"
         style={{
-          height: '180vh',
+          height: isMobile ? '220vh' : '180vh',
           position: 'relative',
           overflowX: 'hidden',
           zIndex: 10,
@@ -74,18 +84,19 @@ export default function SpacePortalSectionV2() {
             pointerEvents: 'none',
             zIndex: 2,
             opacity: textOpacity,
-            transform: `scale(${textScale})`,
+            transform: `scale(${textScale}) translateZ(${textZ}px)`,
             transition: 'opacity 0.1s, transform 0.1s',
             willChange: 'opacity, transform',
             padding: '0 1rem',
             maxWidth: '100vw',
+            perspective: '1000px',
           }}
         >
           <h1
             className="spaceportal-text"
             style={{
               color: 'white',
-              fontSize: '3rem',
+              fontSize: isMobile ? '2rem' : '3rem',
               fontWeight: 'bold',
               textShadow: '0 0 32px #fff, 0 0 8px #fff',
               textAlign: 'center',

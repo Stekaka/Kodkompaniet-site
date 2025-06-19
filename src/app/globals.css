@@ -56,4 +56,9 @@ body {
     width: 100vw !important;
     overflow-x: hidden !important;
   }
+  .process-section-sticky {
+    align-items: flex-start !important;
+    padding-top: 2.5rem !important;
+    height: 100vh !important;
+  }
 }

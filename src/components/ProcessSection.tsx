@@ -165,15 +165,12 @@ export default function ProcessSection() {
 				}}
 			>
 				<div
+					className="process-section-sticky flex justify-center items-center"
 					style={{
 						position: 'sticky',
 						top: 0,
 						width: '100vw',
 						overflow: 'hidden',
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: isMobile ? 'flex-start' : 'center',
-						paddingTop: isMobile ? '2.5rem' : 0,
 						height: '100vh',
 						zIndex: 1,
 					}}

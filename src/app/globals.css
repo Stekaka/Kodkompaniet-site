@@ -61,6 +61,12 @@ body {
     padding-top: 2.5rem !important;
     height: 100vh !important;
   }
+  .contact-form-section {
+    max-width: 98vw !important;
+    margin: 1rem auto !important;
+    border-radius: 1.25rem !important;
+    padding: 1rem !important;
+  }
 }
 
 .bg-space {

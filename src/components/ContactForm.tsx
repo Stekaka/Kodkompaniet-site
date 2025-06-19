@@ -33,14 +33,32 @@ export default function ContactForm() {
 
   return (
     <section
-      className="max-w-2xl mx-auto my-12 p-0 md:p-8 rounded-3xl shadow-xl border border-lime-200/20 flex flex-col md:flex-row gap-0 md:gap-8 items-stretch overflow-hidden"
-      style={{
-        background: 'rgba(255,255,255,0.13)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(34,197,94,0.10)',
-        boxShadow: '0 8px 32px 0 #22c55e22, 0 1.5px 4px 0 #22c55e11',
-      }}
+      className="
+        w-full
+        max-w-md
+        md:max-w-2xl
+        mx-auto
+        my-8
+        p-4
+        md:p-8
+        rounded-3xl
+        shadow-xl
+        border
+        border-lime-200/20
+        flex
+        flex-col
+        md:flex-row
+        gap-0
+        md:gap-8
+        items-stretch
+        overflow-hidden
+        bg-white/10
+        backdrop-blur-lg
+        "
+        style={{
+          maxWidth: '95vw',
+          margin: '1.5rem auto',
+        }}
     >
       {/* Kontaktinfo */}
       <div className="flex-1 bg-transparent p-8 flex flex-col justify-between min-w-[260px]">
@@ -67,8 +85,8 @@ export default function ContactForm() {
       {/* Formulär */}
       <form
         onSubmit={handleSubmit}
-        className="flex-1 bg-transparent p-8 flex flex-col gap-5 justify-center"
-        style={{ minWidth: 260 }}
+        className="flex-1 bg-transparent p-4 sm:p-8 flex flex-col gap-5 justify-center w-full"
+        style={{ minWidth: 0, maxWidth: '100vw' }}
       >
         <h3 className="text-xl font-semibold text-white drop-shadow mb-2">
           Boka gratis rådgivning

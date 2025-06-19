@@ -59,15 +59,7 @@ export default function SpacePortalSectionV2() {
           zIndex: 10,
         }}
       >
-        <div
-          style={{
-            position: 'sticky',
-            top: 0,
-            height: '100vh',
-            width: '100vw',
-            perspective: '1200px', // viktig för 3D-känsla!
-          }}
-        >
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
             <SpacePortalStars progress={progress} />
           </Canvas>

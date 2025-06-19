@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Typewriter } from 'react-simple-typewriter'
 import { useState } from 'react'
-import ContactForm from './ContactForm'
+import ContactForm from './ContactForm.tsx'
 
 export default function HeroSection() {
   const [showForm, setShowForm] = useState(false)
@@ -45,7 +45,17 @@ export default function HeroSection() {
       {/* 🔘 CTA-knappar */}
       <div className="z-10 flex gap-4 mt-10">
         <button
-          className="cta-btn"
+          className="
+            px-7 py-3
+            rounded-full
+            bg-gradient-to-r from-green-400 via-lime-400 to-green-500
+            text-black font-semibold text-lg
+            shadow-lg shadow-green-900/10
+            transition
+            hover:scale-105 hover:shadow-xl hover:from-green-300 hover:to-green-400
+            focus:outline-none focus:ring-2 focus:ring-green-300
+            active:scale-95
+            "
           onClick={() => setShowForm(true)}
         >
           Boka gratis rådgivning

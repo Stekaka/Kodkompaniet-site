@@ -42,61 +42,70 @@ export default function SpacePortalSectionV2() {
   const textZ = lerp(progress, [0, 0.15, 0.4, 0.6, 1], [-1200, -200, 0, 400, 1200])
 
   return (
-    <div
-      ref={wrapperRef}
-      className="spaceportal-section"
+    <section
+      className="relative"
       style={{
-        height: '180vh',
-        position: 'relative',
-        overflowX: 'hidden',
-        zIndex: 10,
+        minHeight: '120vh', // eller mer om det behövs
+        background: 'linear-gradient(to bottom, #0a0a1a 0%, #18181b 60%, #000 100%)',
       }}
     >
       <div
+        ref={wrapperRef}
+        className="spaceportal-section"
         style={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
-          width: '100vw',
-          perspective: '1200px', // viktig för 3D-känsla!
+          height: '180vh',
+          position: 'relative',
+          overflowX: 'hidden',
+          zIndex: 10,
         }}
       >
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-          <SpacePortalStars progress={progress} />
-        </Canvas>
-      </div>
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          pointerEvents: 'none',
-          zIndex: 2,
-          opacity: textOpacity,
-          transform: `scale(${textScale})`,
-          transition: 'opacity 0.1s, transform 0.1s',
-          willChange: 'opacity, transform',
-          padding: '0 1rem',
-          maxWidth: '100vw',
-        }}
-      >
-        <h1
-          className="spaceportal-text"
+        <div
           style={{
-            color: 'white',
-            fontSize: '3rem',
-            fontWeight: 'bold',
-            textShadow: '0 0 32px #fff, 0 0 8px #fff',
-            textAlign: 'center',
-            letterSpacing: '0.04em',
-            margin: 0,
+            position: 'sticky',
+            top: 0,
+            height: '100vh',
+            width: '100vw',
+            perspective: '1200px', // viktig för 3D-känsla!
           }}
         >
-          Step into our world
-        </h1>
+          <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+            <SpacePortalStars progress={progress} />
+          </Canvas>
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+            zIndex: 2,
+            opacity: textOpacity,
+            transform: `scale(${textScale})`,
+            transition: 'opacity 0.1s, transform 0.1s',
+            willChange: 'opacity, transform',
+            padding: '0 1rem',
+            maxWidth: '100vw',
+          }}
+        >
+          <h1
+            className="spaceportal-text"
+            style={{
+              color: 'white',
+              fontSize: '3rem',
+              fontWeight: 'bold',
+              textShadow: '0 0 32px #fff, 0 0 8px #fff',
+              textAlign: 'center',
+              letterSpacing: '0.04em',
+              margin: 0,
+            }}
+          >
+            Step into our world
+          </h1>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent pointer-events-none" />
       </div>
-    </div>
+    </section>
   )
 }

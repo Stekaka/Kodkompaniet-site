@@ -62,3 +62,8 @@ body {
     height: 100vh !important;
   }
 }
+
+.bg-space {
+  background: linear-gradient(to bottom, #0a0a1a 0%, #18181b 60%, #000 100%);
+  min-height: 120vh; /* eller mer om det behövs */
+}

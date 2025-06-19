@@ -1,10 +1,18 @@
 'use client'
 
 import { useState } from 'react'
+import RocketCaptcha from './RocketCaptcha'
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [form, setForm] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: '',
+  })
+  const [verified, setVerified] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -24,21 +32,48 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-md w-full mx-auto bg-white rounded-2xl shadow-xl p-8 flex flex-col gap-6 border border-gray-100"
+    <section
+      className="max-w-2xl mx-auto my-12 p-0 md:p-8 rounded-3xl shadow-xl border border-lime-200/20 flex flex-col md:flex-row gap-0 md:gap-8 items-stretch overflow-hidden"
       style={{
-        boxShadow: '0 8px 32px 0 rgba(60,60,60,0.10), 0 1.5px 4px 0 rgba(60,60,60,0.06)',
-        fontFamily: 'system-ui, sans-serif',
+        background: 'rgba(255,255,255,0.13)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: '1px solid rgba(34,197,94,0.10)',
+        boxShadow: '0 8px 32px 0 #22c55e22, 0 1.5px 4px 0 #22c55e11',
       }}
     >
-      <h2 className="text-2xl font-semibold text-gray-900 mb-2 text-center tracking-tight">Kontakta oss</h2>
-      <div className="flex flex-col gap-4">
-        <label className="relative">
-          <span className="sr-only">Namn</span>
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-            <svg width="20" height="20" fill="none"><path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 0116 0H2z" stroke="#bbb" strokeWidth="1.5"/></svg>
-          </span>
+      {/* Kontaktinfo */}
+      <div className="flex-1 bg-transparent p-8 flex flex-col justify-between min-w-[260px]">
+        <div>
+          <h2 className="text-2xl font-bold text-white drop-shadow-lg mb-2 tracking-tight">
+            Vill du ringa oss istället?
+          </h2>
+          <p className="text-gray-200 mb-4">
+            Vi älskar att prata webbutveckling, design och digital strategi. Slå oss en signal eller maila direkt!
+          </p>
+          <div className="flex items-center gap-2 text-lime-400 font-medium">
+            <svg width="20" height="20" fill="none"><path d="M6.5 3.5A2 2 0 0 1 8.5 2h3a2 2 0 0 1 2 1.5l.5 2A2 2 0 0 1 12 7H8a2 2 0 0 1-2-1.5l.5-2Z" stroke="#22c55e" strokeWidth="1.5"/></svg>
+            <span>070-123 45 67</span>
+          </div>
+          <div className="flex items-center gap-2 text-lime-400 font-medium mt-2">
+            <svg width="20" height="20" fill="none"><path d="M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm0 0l7 6 7-6" stroke="#22c55e" strokeWidth="1.5"/></svg>
+            <span>hej@dittbolag.se</span>
+          </div>
+        </div>
+        <div className="text-gray-400 text-xs mt-8">
+          <span>Vi svarar oftast inom 1 arbetsdag.</span>
+        </div>
+      </div>
+      {/* Formulär */}
+      <form
+        onSubmit={handleSubmit}
+        className="flex-1 bg-transparent p-8 flex flex-col gap-5 justify-center"
+        style={{ minWidth: 260 }}
+      >
+        <h3 className="text-xl font-semibold text-white drop-shadow mb-2">
+          Boka gratis rådgivning
+        </h3>
+        <div className="flex flex-col gap-3">
           <input
             type="text"
             name="name"
@@ -47,14 +82,17 @@ export default function ContactForm() {
             autoComplete="name"
             value={form.name}
             onChange={handleChange}
-            className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition outline-none bg-gray-50 text-gray-900"
+            className="px-4 py-2 w-full rounded-lg border border-lime-200/40 bg-white/30 text-gray-900 placeholder:text-gray-300 focus:border-lime-400 focus:ring-2 focus:ring-lime-200 transition outline-none"
           />
-        </label>
-        <label className="relative">
-          <span className="sr-only">E-post</span>
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-            <svg width="20" height="20" fill="none"><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 0l7 6 7-6" stroke="#bbb" strokeWidth="1.5"/></svg>
-          </span>
+          <input
+            type="text"
+            name="company"
+            placeholder="Företag (valfritt)"
+            autoComplete="organization"
+            value={form.company}
+            onChange={handleChange}
+            className="px-4 py-2 w-full rounded-lg border border-lime-200/40 bg-white/30 text-gray-900 placeholder:text-gray-300 focus:border-lime-400 focus:ring-2 focus:ring-lime-200 transition outline-none"
+          />
           <input
             type="email"
             name="email"
@@ -63,39 +101,48 @@ export default function ContactForm() {
             autoComplete="email"
             value={form.email}
             onChange={handleChange}
-            className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition outline-none bg-gray-50 text-gray-900"
+            className="px-4 py-2 w-full rounded-lg border border-lime-200/40 bg-white/30 text-gray-900 placeholder:text-gray-300 focus:border-lime-400 focus:ring-2 focus:ring-lime-200 transition outline-none"
           />
-        </label>
-        <label className="relative">
-          <span className="sr-only">Meddelande</span>
-          <span className="absolute left-3 top-3 text-gray-400 pointer-events-none">
-            <svg width="20" height="20" fill="none"><path d="M4 4h12v12H4z" stroke="#bbb" strokeWidth="1.5"/><path d="M4 4l6 6 6-6" stroke="#bbb" strokeWidth="1.5"/></svg>
-          </span>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Telefon (valfritt)"
+            autoComplete="tel"
+            value={form.phone}
+            onChange={handleChange}
+            className="px-4 py-2 w-full rounded-lg border border-lime-200/40 bg-white/30 text-gray-900 placeholder:text-gray-300 focus:border-lime-400 focus:ring-2 focus:ring-lime-200 transition outline-none"
+          />
           <textarea
             name="message"
             required
-            placeholder="Meddelande"
+            placeholder="Vad vill du ha hjälp med?"
             rows={4}
             value={form.message}
             onChange={handleChange}
-            className="pl-10 pr-4 pt-3 pb-2 w-full rounded-lg border border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition outline-none bg-gray-50 text-gray-900 resize-none"
+            className="px-4 py-2 w-full rounded-lg border border-lime-200/40 bg-white/30 text-gray-900 placeholder:text-gray-300 focus:border-lime-400 focus:ring-2 focus:ring-lime-200 transition outline-none resize-none"
           />
-        </label>
-      </div>
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-600 hover:to-blue-500 text-white font-semibold py-2 rounded-lg shadow transition active:scale-95"
-        style={{ letterSpacing: '.01em' }}
-      >
-        {status === 'sending' ? 'Skickar...' : 'Skicka'}
-      </button>
-      {status === 'sent' && (
-        <p className="text-green-600 font-semibold text-center">Tack för ditt meddelande! Vi hör av oss snart.</p>
-      )}
-      {status === 'error' && (
-        <p className="text-red-600 font-semibold text-center">Något gick fel. Försök igen!</p>
-      )}
-    </form>
+        </div>
+        <RocketCaptcha onVerify={() => setVerified(true)} />
+        <button
+          type="submit"
+          disabled={status === 'sending' || !verified}
+          className="bg-gradient-to-r from-green-400 via-lime-400 to-green-500 hover:from-lime-300 hover:to-green-400 text-black font-semibold py-2 rounded-lg shadow-lg transition active:scale-95"
+          style={{ letterSpacing: '.01em' }}
+        >
+          {status === 'sending' ? 'Skickar...' : 'Skicka'}
+        </button>
+        {status === 'sent' && (
+          <p className="text-green-400 font-semibold text-center drop-shadow">
+            Tack för ditt meddelande! Vi hör av oss snart.
+          </p>
+        )}
+        {status === 'error' && (
+          <p className="text-red-500 font-semibold text-center">Något gick fel. Försök igen!</p>
+        )}
+        <div className="text-xs text-gray-400 mt-2 text-center">
+          Genom att skicka formuläret godkänner du vår hantering av personuppgifter.
+        </div>
+      </form>
+    </section>
   )
 }

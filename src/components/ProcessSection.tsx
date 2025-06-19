@@ -160,7 +160,7 @@ export default function ProcessSection() {
 					position: 'sticky',
 					top: 0,
 					width: '100vw',
-					overflowX: 'hidden',
+					overflow: 'hidden',
 					zIndex: 10,
 				}}
 			>
@@ -168,13 +168,14 @@ export default function ProcessSection() {
 					style={{
 						position: 'sticky',
 						top: 0,
-						height: '100vh',
 						width: '100vw',
-						zIndex: 1,
 						overflow: 'hidden',
 						display: 'flex',
 						justifyContent: 'center',
-						alignItems: 'center',
+						alignItems: isMobile ? 'flex-start' : 'center',
+						paddingTop: isMobile ? '2.5rem' : 0,
+						height: '100vh',
+						zIndex: 1,
 					}}
 				>
 					<div className="relative w-full h-full flex justify-center items-center">

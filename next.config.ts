@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
+/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  images: { unoptimized: true },
+  basePath: "/Kodkompaniet-site", // <-- med inledande slash!
+  assetPrefix: "/Kodkompaniet-site/", // <-- med inledande slash!
+  eslint: { ignoreDuringBuilds: true },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

@@ -54,7 +54,7 @@ export default function SpacePortalStars({ progress }: { progress: number }) {
       }
     }
     if (group.current) {
-      // @ts-ignore
+      // @ts-expect-error: group.current.children is not typed as Mesh[]
       group.current.children.forEach((mesh: THREE.Mesh, i: number) => {
         mesh.position.copy(stars.current[i].pos)
       })

@@ -7,7 +7,8 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 function RotatingStars() {
-  const group = useRef<any>()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const group = useRef<any>(null)
   useFrame(() => {
     if (group.current) {
       group.current.rotation.y += 0.0008

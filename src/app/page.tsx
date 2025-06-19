@@ -19,11 +19,19 @@ export default function Home() {
   return (
     <div className="relative">
       <Canvas
-        className="fixed inset-0 w-full h-full z-0"
-        style={{ position: 'fixed', inset: 0, width: '100vw', height: '200vh', zIndex: 0 }}
+        className="fixed inset-0 w-full h-[200vh] z-0"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          width: '100vw',
+          height: '200vh',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
         camera={{ position: [0, 0, 1] }}
       >
-        <SpacePortalStars />
+        <color attach="background" args={['black']} />
+        <SpacePortalStars progress={0} />
       </Canvas>
       <div className="relative z-10">
         <HeroSection />

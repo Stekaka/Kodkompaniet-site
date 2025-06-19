@@ -101,3 +101,8 @@ export default function SpacePortalSectionV2() {
     </section>
   )
 }
+
+type Props = { progress?: number }
+export function SpacePortalStars({ progress }: Props) {
+  return null
+}

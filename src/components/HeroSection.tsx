@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Typewriter } from 'react-simple-typewriter'
+import { useState } from 'react'
+import ContactForm from './ContactForm'
 
 export default function HeroSection() {
+  const [showForm, setShowForm] = useState(false)
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 50 }}
@@ -40,7 +44,10 @@ export default function HeroSection() {
 
       {/* 🔘 CTA-knappar */}
       <div className="z-10 flex gap-4 mt-10">
-        <button className="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-xl text-lg shadow-lg transition">
+        <button
+          className="cta-btn"
+          onClick={() => setShowForm(true)}
+        >
           Boka gratis rådgivning
         </button>
         <button className="border border-white hover:bg-white hover:text-black py-3 px-6 rounded-xl text-lg shadow-md transition">
@@ -52,6 +59,28 @@ export default function HeroSection() {
       <div className="z-10 mt-20 animate-bounce text-green-400 font-mono opacity-60 text-sm">
         {'< scrolla ner />'}
       </div>
+
+      {/* 📞 Kontaktformulär */}
+      {showForm && (
+        <div
+          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+          onClick={() => setShowForm(false)}
+        >
+          <div
+            className="relative"
+            onClick={e => e.stopPropagation()} // Hindra stängning när man klickar i formuläret
+          >
+            <button
+              className="absolute top-2 right-2 text-2xl text-gray-500 hover:text-gray-800"
+              onClick={() => setShowForm(false)}
+              aria-label="Stäng"
+            >
+              ×
+            </button>
+            <ContactForm />
+          </div>
+        </div>
+      )}
     </motion.section>
   )
 }

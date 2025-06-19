@@ -50,27 +50,47 @@ const steps = [
 function RocketSVG() {
 	return (
 		<svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-			{/* Raketkropp */}
-			<g>
-				{/* Bred kropp */}
-				<ellipse
-					cx="36"
-					cy="36"
-					rx="10"
-					ry="26"
-					fill="#22c55e"
-					stroke="#a3e635"
-					strokeWidth="2.5"
-				/>
-				{/* Fönster */}
-				<circle cx="36" cy="26" r="6" fill="#fff" stroke="#a3e635" strokeWidth="2" />
-				{/* Fenor vänster */}
-				<polygon points="26,54 18,62 32,56" fill="#a3e635" />
-				{/* Fenor höger */}
-				<polygon points="46,54 54,62 40,56" fill="#a3e635" />
-				{/* Flamma */}
-				<polygon points="36,62 33,70 36,66 39,70" fill="#facc15" />
-			</g>
+			{/* Kropp */}
+			<ellipse
+				cx="36"
+				cy="38"
+				rx="12"
+				ry="25"
+				fill="#22c55e"
+				stroke="#a3e635"
+				strokeWidth="3"
+			/>
+			{/* Fönster */}
+			<ellipse
+				cx="36"
+				cy="26"
+				rx="5"
+				ry="5"
+				fill="#fff"
+				stroke="#a3e635"
+				strokeWidth="2"
+			/>
+			{/* Vänster fena (större och tydligare) */}
+			<polygon
+				points="20,62 30,48 36,60"
+				fill="#a3e635"
+				stroke="#22c55e"
+				strokeWidth="2"
+			/>
+			{/* Höger fena (större och tydligare) */}
+			<polygon
+				points="52,62 42,48 36,60"
+				fill="#a3e635"
+				stroke="#22c55e"
+				strokeWidth="2"
+			/>
+			{/* Flamma (större och tydligare) */}
+			<polygon
+				points="30,70 36,60 42,70"
+				fill="#facc15"
+				stroke="#eab308"
+				strokeWidth="1.5"
+			/>
 		</svg>
 	)
 }
@@ -109,6 +129,8 @@ export default function ProcessSection() {
 			? 0
 			: 1
 
+	const isMobile = typeof window !== "undefined" && window.innerWidth < 600
+
 	return (
 		<section
 			ref={wrapperRef}
@@ -133,69 +155,82 @@ export default function ProcessSection() {
 				Vår process
 			</motion.h2>
 			<div
+				className="process-section"
 				style={{
 					position: 'sticky',
 					top: 0,
-					height: '100vh',
 					width: '100vw',
-					zIndex: 1,
-					overflow: 'hidden',
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
+					overflowX: 'hidden',
+					zIndex: 10,
 				}}
 			>
-				<div className="relative w-full h-full flex justify-center items-center">
-					{/* Vertikalt streck */}
-					<div className="absolute left-1/2 top-[8%] h-[84%] w-1 -translate-x-1/2 bg-gradient-to-b from-green-400 via-lime-300 to-green-900 rounded-full z-0" />
-					{/* Raket */}
-					<motion.div
-						className="absolute left-1/2 -translate-x-1/2 z-10"
-						style={{ top: rocketTop }}
-						transition={{ type: "spring", stiffness: 60, damping: 18 }}
-					>
-						<RocketSVG />
-					</motion.div>
-					{/* Steg */}
-					<div className="w-full max-w-4xl mx-auto relative z-10 h-full">
-						{steps.map((step, i) => {
-							const stepPos = 95 - ((i + 0.5) * (84 / steps.length))
-							const stepTrigger = (i + 1) / steps.length
-							const visible = progress > stepTrigger - 0.1
-							const side = i % 2 === 0 ? 'left' : 'right'
-							return (
-								<motion.div
-									key={step.title}
-									initial={false}
-									animate={visible
-										? { opacity: 1, y: 0, x: 0 }
-										: { opacity: 0, y: 60, x: side === 'left' ? -40 : 40 }
-									}
-									transition={{ duration: 0.6, type: "spring" }}
-									className={`absolute w-1/2 flex items-center gap-4 ${side === 'left'
-										? 'left-0 justify-end text-right pr-8'
-										: 'right-0 justify-start text-left pl-8'
-									}`}
-									style={{
-										top: `calc(${stepPos}% - 32px)`,
-										pointerEvents: 'none',
-									}}
-								>
-									{side === 'left' && (
-										<span className="flex-shrink-0 drop-shadow-[0_0_8px_#22c55e]">{step.icon}</span>
-									)}
-									<div>
-										<h3 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-200 via-lime-300 to-green-100 drop-shadow-[0_0_8px_#22c55e]">
-											{step.title}
-										</h3>
-										<p className="text-green-100 text-base md:text-lg">{step.desc}</p>
-									</div>
-									{side === 'right' && (
-										<span className="flex-shrink-0 drop-shadow-[0_0_8px_#22c55e]">{step.icon}</span>
-									)}
-								</motion.div>
-							)
-						})}
+				<div
+					style={{
+						position: 'sticky',
+						top: 0,
+						height: '100vh',
+						width: '100vw',
+						zIndex: 1,
+						overflow: 'hidden',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<div className="relative w-full h-full flex justify-center items-center">
+						{/* Vertikalt streck */}
+						<div className="absolute left-1/2 top-[8%] h-[84%] w-1 -translate-x-1/2 bg-gradient-to-b from-green-400 via-lime-300 to-green-900 rounded-full z-0" />
+						{/* Raket */}
+						<motion.div
+							className="absolute left-1/2 -translate-x-1/2 z-10"
+							style={{ top: rocketTop }}
+							transition={{ type: "spring", stiffness: 60, damping: 18 }}
+						>
+							<RocketSVG />
+						</motion.div>
+						{/* Steg */}
+						<div className="w-full max-w-4xl mx-auto relative z-10 h-full">
+							{steps.map((step, i) => {
+								const stepPos = isMobile
+								  ? 18 + ((i + 0.5) * (64 / steps.length)) // flytta upp på mobil
+								  : 95 - ((i + 0.5) * (84 / steps.length))
+								const stepTrigger = (i + 1) / steps.length
+								const visible = progress > stepTrigger - 0.1
+								const side = i % 2 === 0 ? 'left' : 'right'
+								return (
+									<motion.div
+										key={step.title}
+										initial={false}
+										animate={visible
+											? { opacity: 1, y: 0, x: 0 }
+											: { opacity: 0, y: 60, x: side === 'left' ? -40 : 40 }
+										}
+										transition={{ duration: 0.6, type: "spring" }}
+										className={`absolute w-1/2 flex items-center gap-4 ${side === 'left'
+											? 'left-0 justify-end text-right pr-8'
+											: 'right-0 justify-start text-left pl-8'
+										}`}
+										style={{
+											top: `calc(${stepPos}% - 32px)`,
+											pointerEvents: 'none',
+										}}
+									>
+										{side === 'left' && (
+											<span className="flex-shrink-0 drop-shadow-[0_0_8px_#22c55e]">{step.icon}</span>
+										)}
+										<div>
+											<h3 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-200 via-lime-300 to-green-100 drop-shadow-[0_0_8px_#22c55e]">
+												{step.title}
+											</h3>
+											<p className="text-green-100 text-base md:text-lg">{step.desc}</p>
+										</div>
+										{side === 'right' && (
+											<span className="flex-shrink-0 drop-shadow-[0_0_8px_#22c55e]">{step.icon}</span>
+										)}
+									</motion.div>
+								)
+							})}
+						</div>
 					</div>
 				</div>
 			</div>

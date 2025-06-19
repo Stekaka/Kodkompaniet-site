@@ -42,7 +42,16 @@ export default function SpacePortalSectionV2() {
   const textZ = lerp(progress, [0, 0.15, 0.4, 0.6, 1], [-1200, -200, 0, 400, 1200])
 
   return (
-    <div ref={wrapperRef} style={{ height: '180vh', position: 'relative' }}>
+    <div
+      ref={wrapperRef}
+      className="spaceportal-section"
+      style={{
+        height: '180vh',
+        position: 'relative',
+        overflowX: 'hidden',
+        zIndex: 10,
+      }}
+    >
       <div
         style={{
           position: 'sticky',
@@ -66,19 +75,25 @@ export default function SpacePortalSectionV2() {
           pointerEvents: 'none',
           zIndex: 2,
           opacity: textOpacity,
-          transform: `translateZ(${textZ}px) scale(${textScale})`,
+          transform: `scale(${textScale})`,
           transition: 'opacity 0.1s, transform 0.1s',
           willChange: 'opacity, transform',
+          padding: '0 1rem',
+          maxWidth: '100vw',
         }}
       >
-        <h1 style={{
-          color: 'white',
-          fontSize: '3rem',
-          fontWeight: 'bold',
-          textShadow: '0 0 32px #fff, 0 0 8px #fff',
-          textAlign: 'center',
-          letterSpacing: '0.04em',
-        }}>
+        <h1
+          className="spaceportal-text"
+          style={{
+            color: 'white',
+            fontSize: '3rem',
+            fontWeight: 'bold',
+            textShadow: '0 0 32px #fff, 0 0 8px #fff',
+            textAlign: 'center',
+            letterSpacing: '0.04em',
+            margin: 0,
+          }}
+        >
           Step into our world
         </h1>
       </div>

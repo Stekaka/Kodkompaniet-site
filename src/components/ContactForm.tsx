@@ -34,31 +34,28 @@ export default function ContactForm() {
   return (
     <section
       className="
+        mx-auto
+        my-8
         w-full
         max-w-md
         md:max-w-2xl
-        mx-auto
-        my-8
         p-4
         md:p-8
         rounded-3xl
         shadow-xl
         border
         border-lime-200/20
+        bg-white/10
+        backdrop-blur-lg
         flex
         flex-col
         md:flex-row
-        gap-0
-        md:gap-8
-        items-stretch
-        overflow-hidden
-        bg-white/10
-        backdrop-blur-lg
-        "
-        style={{
-          maxWidth: '95vw',
-          margin: '1.5rem auto',
-        }}
+        gap-6
+      "
+      style={{
+        maxWidth: '95vw',
+        margin: '1.5rem auto',
+      }}
     >
       {/* Kontaktinfo */}
       <div className="flex-1 bg-transparent p-8 flex flex-col justify-between min-w-[260px]">

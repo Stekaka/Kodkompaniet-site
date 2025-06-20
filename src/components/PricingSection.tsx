@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function PricingSection() {
   return (
-    <section className="snap-start min-h-screen bg-gradient-to-b from-white to-gray-100 text-black px-6 py-24">
+    <section id="pricing" className="snap-start min-h-screen bg-gradient-to-b from-white to-gray-100 text-black px-6 py-24">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Prispaket</h2>
         <p className="text-lg text-gray-600 mb-12">

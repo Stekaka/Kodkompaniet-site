@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import PricingSection from '@/components/PricingSection'
 import HeroSection from '@/components/HeroSection'
 import ProcessSection from '@/components/ProcessSection'
@@ -10,9 +11,11 @@ import SpacePortalSectionV2 from '@/components/SpacePortalSectionV2'
 import HamburgerMenu from '@/components/HamburgerMenu'
 
 export default function Home() {
+  const pathname = usePathname()
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   return (
     <div className="relative">

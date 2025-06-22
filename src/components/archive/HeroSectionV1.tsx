@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Typewriter } from 'react-simple-typewriter'
 import { useState } from 'react'
-import ContactForm from './ContactForm'
+/* import ContactForm from './ContactForm' */
 
 export default function HeroSection() {
   const [showForm, setShowForm] = useState(false)

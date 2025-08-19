@@ -81,7 +81,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl lg:max-w-5xl max-h-[98vh] sm:max-h-[95vh]"
+              className="relative w-full max-w-[95vw] sm:max-w-4xl lg:max-w-5xl max-h-[95vh] sm:max-h-[95vh]"
               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking modal content
             >
               {/* Modal Content */}
@@ -95,13 +95,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 }}
               >
                 {/* Header */}
-                <div className="relative p-3 sm:p-4 lg:p-6 pb-3 sm:pb-4 border-b border-gray-600/30 bg-gradient-to-r from-gray-900/50 to-gray-800/50">
+                <div className="relative p-2 sm:p-3 md:p-4 lg:p-6 pb-2 sm:pb-3 md:pb-4 border-b border-gray-600/30 bg-gradient-to-r from-gray-900/50 to-gray-800/50">
                   <button
                     onClick={onClose}
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 rounded-full bg-gray-800/80 hover:bg-gray-700 transition-all duration-200 group backdrop-blur-sm border border-gray-600/30"
+                    className="absolute top-1 right-1 sm:top-2 sm:right-2 md:top-4 md:right-4 p-1.5 sm:p-2 rounded-full bg-gray-800/80 hover:bg-gray-700 transition-all duration-200 group backdrop-blur-sm border border-gray-600/30"
                     aria-label="Stäng"
                   >
-                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white transition-colors" />
+                    <X className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-white transition-colors" />
                   </button>
                   
                   <div className="text-center pr-10 sm:pr-12">
@@ -110,10 +110,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         <Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                       </div>
                     </div>
-                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 bg-gradient-to-r from-white via-green-100 to-green-200 bg-clip-text text-transparent">
+                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 bg-gradient-to-r from-white via-green-100 to-green-200 bg-clip-text text-transparent">
                       Boka gratis rådgivning
                     </h2>
-                    <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-gray-300 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
                       Låt oss diskutera ditt projekt över en kopp kaffe ☕ Vi hjälper dig att skapa något fantastiskt!
                     </p>
                   </div>
@@ -122,7 +122,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 {/* Contact Info & Form */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-0">
                   {/* Contact Info */}
-                  <div className="p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-green-900/15 via-green-800/10 to-transparent border-b lg:border-b-0 lg:border-r border-gray-600/30 relative overflow-hidden">
+                  <div className="p-2 sm:p-3 md:p-4 lg:p-6 bg-gradient-to-br from-green-900/15 via-green-800/10 to-transparent border-b lg:border-b-0 lg:border-r border-gray-600/30 relative overflow-hidden">
                     {/* Decorative gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent pointer-events-none" />
                     
@@ -184,7 +184,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                   
                   {/* Contact Form */}
-                  <div className="p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-gray-900/30 to-gray-800/20 relative overflow-hidden">
+                  <div className="p-2 sm:p-3 md:p-4 lg:p-6 bg-gradient-to-br from-gray-900/30 to-gray-800/20 relative overflow-hidden">
                     {/* Decorative gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-tl from-green-500/3 to-transparent pointer-events-none" />
                     

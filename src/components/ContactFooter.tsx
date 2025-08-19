@@ -49,8 +49,8 @@ export default function ContactFooter({ onOpenContact }: ContactFooterProps) {
               <Phone className="w-8 h-8 text-green-400" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Ring oss</h3>
-            <p className="text-green-400 font-mono text-lg">070-123 45 67</p>
-            <p className="text-gray-400 text-sm">Vi svarar direkt</p>
+            <p className="text-green-400 font-mono text-lg">0709-60 72 08</p>
+            <p className="text-gray-400 text-sm">Få kontakt direkt</p>
           </motion.div>
 
           {/* Email */}
@@ -65,8 +65,8 @@ export default function ContactFooter({ onOpenContact }: ContactFooterProps) {
               <Mail className="w-8 h-8 text-green-400" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Skicka mejl</h3>
-            <p className="text-green-400 font-mono text-lg">hej@kodkompaniet.se</p>
-            <p className="text-gray-400 text-sm">Vi svarar snabbt</p>
+            <p className="text-green-400 font-mono text-lg">hej@kod.se</p>
+            <p className="text-gray-400 text-sm">Få svar snabbt</p>
           </motion.div>
 
           {/* Plats */}
@@ -81,7 +81,7 @@ export default function ContactFooter({ onOpenContact }: ContactFooterProps) {
               <MapPin className="w-8 h-8 text-green-400" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Träffas på plats</h3>
-            <p className="text-green-400 font-mono text-lg">Stockholm, Sverige</p>
+            <p className="text-green-400 font-mono text-lg">Göteborg, Sverige</p>
             <p className="text-gray-400 text-sm">Vi bjuder på kaffe ☕</p>
           </motion.div>
 

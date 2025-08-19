@@ -192,7 +192,7 @@ export default function ProcessSection() {
 						<div className="w-full max-w-4xl mx-auto relative z-10 h-full">
 							{steps.map((step, i) => {
 								const stepPos = isMobile
-								  ? 18 + ((i + 0.5) * (64 / steps.length)) // flytta upp på mobil
+								  ? 82 - ((i + 0.5) * (64 / steps.length)) // från botten till toppen på mobil
 								  : 95 - ((i + 0.5) * (84 / steps.length))
 								const stepTrigger = (i + 1) / steps.length
 								const visible = progress > stepTrigger - 0.1

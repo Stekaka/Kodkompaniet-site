@@ -59,14 +59,14 @@ export default function SpacePortalSectionHero({ onOpenContact }: SpacePortalSec
     }
   }, [])
 
-  // Titelpaketet fade/scale ut
-  const heroOpacity = lerp(progress, [0, 0.08, 0.18, 0.35, 0.5], [1, 1, 0.7, 0.2, 0])
-  const heroScale = lerp(progress, [0, 0.08, 0.18, 0.35, 0.5], [1, 1, 0.95, 0.9, 0.8])
+  // Titelpaketet fade/scale ut - enklare på mobil
+  const heroOpacity = isMobile ? 1 : lerp(progress, [0, 0.08, 0.18, 0.35, 0.5], [1, 1, 0.7, 0.2, 0])
+  const heroScale = isMobile ? 1 : lerp(progress, [0, 0.08, 0.18, 0.35, 0.5], [1, 1, 0.95, 0.9, 0.8])
 
-  // "Utmana det normala!" fade/scale in och kommer närmare
-  const utmanaOpacity = lerp(progress, [0.35, 0.5, 0.7, 1], [0, 0.5, 1, 1])
-  const utmanaScale = lerp(progress, [0.35, 0.5, 1], [0.7, 1.2, 2.2])
-  const utmanaZ = lerp(progress, [0.35, 0.5, 1], [0, 200, 800])
+  // "Utmana det normala!" fade/scale in och kommer närmare - inaktiverad på mobil
+  const utmanaOpacity = isMobile ? 0 : lerp(progress, [0.35, 0.5, 0.7, 1], [0, 0.5, 1, 1])
+  const utmanaScale = isMobile ? 0 : lerp(progress, [0.35, 0.5, 1], [0.7, 1.2, 2.2])
+  const utmanaZ = isMobile ? 0 : lerp(progress, [0.35, 0.5, 1], [0, 200, 800])
 
   return (
     <section

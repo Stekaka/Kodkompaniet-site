@@ -5,7 +5,11 @@ import { CheckCircle, Server, Rocket, Wrench } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-export default function PricingSection() {
+interface PricingSectionProps {
+  onOpenContact: () => void
+}
+
+export default function PricingSection({ onOpenContact }: PricingSectionProps) {
   return (
     <section id="pricing" className="snap-start min-h-screen bg-gradient-to-b from-white to-gray-100 text-black px-6 py-24">
       <div className="max-w-6xl mx-auto text-center">
@@ -72,13 +76,13 @@ export default function PricingSection() {
         </div>
 
         <div className="mt-16">
-      <a
-  href="#kontakt" // Anpassa efter sektion eller använd onClick
-  className="inline-flex items-center gap-2 bg-gradient-to-r from-green-400 to-lime-500 hover:from-lime-500 hover:to-green-400 text-black font-semibold py-4 px-8 rounded-xl text-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 group"
->
-  Boka gratis rådgivning
-  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-</a>
+          <button
+            onClick={onOpenContact}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-green-400 to-lime-500 hover:from-lime-500 hover:to-green-400 text-black font-semibold py-4 px-8 rounded-xl text-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 group"
+          >
+            Boka gratis rådgivning
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </div>
     </section>

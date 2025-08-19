@@ -58,6 +58,7 @@ export default function HamburgerMenu() {
                 { href: '/', label: 'Start' },
                 { href: '#process', label: 'Process' },
                 { href: '#pricing', label: 'Priser' },
+                { href: '#portfolio', label: 'Portfolio' },
                 { href: '#contact', label: 'Kontakt' }
               ].map(({ href, label }, i) => (
                 <motion.div

@@ -4,6 +4,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
+
 const steps = [
 	{
 		title: "Strategi",
@@ -133,6 +134,7 @@ export default function ProcessSection() {
 
 	return (
 		<section
+			id="process"
 			ref={wrapperRef}
 			style={{ height: '350vh', position: 'relative', overscrollBehavior: 'contain' }}
 			className="bg-gradient-to-b from-[#0a0a1a] via-[#18181b] to-black"

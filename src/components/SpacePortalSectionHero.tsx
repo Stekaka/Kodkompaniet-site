@@ -6,6 +6,7 @@ import { useRef, useEffect, useState } from 'react'
 import SpacePortalStars from './SpacePortalStars'
 import { Typewriter } from 'react-simple-typewriter'
 
+
 function lerp(input: number, inputRange: number[], outputRange: number[]) {
   for (let i = 1; i < inputRange.length; i++) {
     if (input <= inputRange[i]) {
@@ -16,11 +17,16 @@ function lerp(input: number, inputRange: number[], outputRange: number[]) {
   return outputRange[outputRange.length - 1]
 }
 
-export default function SpacePortalSectionHero() {
+interface SpacePortalSectionHeroProps {
+  onOpenContact: () => void
+}
+
+export default function SpacePortalSectionHero({ onOpenContact }: SpacePortalSectionHeroProps) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   const [progress, setProgress] = useState(0)
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-
+  
   useEffect(() => {
     const handleScroll = () => {
       if (!wrapperRef.current) return
@@ -30,12 +36,26 @@ export default function SpacePortalSectionHero() {
       const scrolled = Math.min(Math.max(-rect.top, 0), totalScroll)
       setProgress(scrolled / (totalScroll || 1))
     }
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', handleScroll)
+    
+    // Throttle scroll events for better performance
+    let ticking = false
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    window.addEventListener('resize', throttledScroll, { passive: true })
     handleScroll()
+    
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      window.removeEventListener('scroll', throttledScroll)
+      window.removeEventListener('resize', throttledScroll)
     }
   }, [])
 
@@ -85,7 +105,7 @@ export default function SpacePortalSectionHero() {
         }}
       >
         <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight bg-gradient-to-br from-white to-green-400 bg-clip-text text-transparent drop-shadow-lg">
-          Kodkompaniet
+          Kod & Co.
         </h1>
         <p className="text-xl md:text-2xl mt-6 h-10 font-mono text-green-400">
           <Typewriter
@@ -104,6 +124,7 @@ export default function SpacePortalSectionHero() {
         </p>
         <div className="flex gap-4 mt-10">
           <button
+            onClick={onOpenContact}
             className="
               px-7 py-3
               rounded-full
@@ -118,9 +139,12 @@ export default function SpacePortalSectionHero() {
           >
             Boka gratis rådgivning
           </button>
-          <button className="border border-white hover:bg-white hover:text-black py-3 px-6 rounded-xl text-lg shadow-md transition">
+          <a 
+            href="#portfolio" 
+            className="border border-white hover:bg-white hover:text-black py-3 px-6 rounded-xl text-lg shadow-md transition inline-block"
+          >
             Se exempel
-          </button>
+          </a>
         </div>
         <div className="mt-20 animate-bounce text-green-400 font-mono opacity-60 text-sm">
           {'< scrolla ner />'}

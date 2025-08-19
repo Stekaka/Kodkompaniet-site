@@ -22,7 +22,7 @@ export default function HeroSection() {
 
       {/* 🌟 Glow-rubrik */}
       <h1 className="z-10 text-6xl md:text-8xl font-extrabold tracking-tight bg-gradient-to-br from-white to-green-400 bg-clip-text text-transparent drop-shadow-lg">
-        Kodkompaniet
+        Kod & Co.
       </h1>
 
       {/* 👨‍💻 Typande text */}

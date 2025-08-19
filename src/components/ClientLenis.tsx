@@ -1,21 +1,36 @@
 'use client'
 
 import { useEffect } from 'react'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 
 export default function ClientLenis() {
   useEffect(() => {
+    // Only initialize Lenis on desktop for better performance
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return
+    }
+
     const lenis = new Lenis({
-      lerp: 0.08,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2,
+      lerp: 0.06, // Reduced for smoother scrolling
+      wheelMultiplier: 0.8, // Reduced for better performance
+      touchMultiplier: 1.0, // Reduced for better performance
     })
+
+    let rafId: number
     function raf(time: number) {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      rafId = requestAnimationFrame(raf)
     }
-    requestAnimationFrame(raf)
-    return () => lenis.destroy()
+    
+    rafId = requestAnimationFrame(raf)
+    
+    return () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId)
+      }
+      lenis.destroy()
+    }
   }, [])
+  
   return null
 }

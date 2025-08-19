@@ -20,7 +20,7 @@ export default function HeroSection() {
         transition={{ duration: 1 }}
         className="z-10 text-5xl md:text-8xl font-extrabold bg-gradient-to-r from-white to-green-400 bg-clip-text text-transparent text-center leading-tight drop-shadow-xl"
       >
-        Kodkompaniet
+        Kod & Co.
       </motion.h1>
 
       <motion.p

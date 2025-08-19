@@ -21,72 +21,31 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    // Byt ut mot ditt API eller Formspree
-    const res = await fetch('https://formspree.io/f/your-form-id', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    if (res.ok) setStatus('sent')
-    else setStatus('error')
+    
+    try {
+      // Simulera formulärhantering - ersätt med din faktiska lösning
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      // Här kan du lägga till din egen formulärhantering
+      // Till exempel: EmailJS, Netlify Forms, eller eget API
+      
+      setStatus('sent')
+      setForm({ name: '', company: '', email: '', phone: '', message: '' })
+      setVerified(false)
+    } catch (error) {
+      setStatus('error')
+    }
   }
 
   return (
-    <section
-      className="
-        mx-auto
-        my-8
-        w-full
-        max-w-md
-        md:max-w-2xl
-        p-4
-        md:p-8
-        rounded-3xl
-        shadow-xl
-        border
-        border-lime-200/20
-        bg-white/10
-        backdrop-blur-lg
-        flex
-        flex-col
-        md:flex-row
-        gap-6
-      "
-      style={{
-        maxWidth: '95vw',
-        margin: '1.5rem auto',
-      }}
-    >
-      {/* Kontaktinfo */}
-      <div className="flex-1 bg-transparent p-8 flex flex-col justify-between min-w-[260px]">
-        <div>
-          <h2 className="text-2xl font-bold text-white drop-shadow-lg mb-2 tracking-tight">
-            Vill du ringa oss istället?
-          </h2>
-          <p className="text-gray-200 mb-4">
-            Vi älskar att prata webbutveckling, design och digital strategi. Slå oss en signal eller maila direkt!
-          </p>
-          <div className="flex items-center gap-2 text-lime-400 font-medium">
-            <svg width="20" height="20" fill="none"><path d="M6.5 3.5A2 2 0 0 1 8.5 2h3a2 2 0 0 1 2 1.5l.5 2A2 2 0 0 1 12 7H8a2 2 0 0 1-2-1.5l.5-2Z" stroke="#22c55e" strokeWidth="1.5"/></svg>
-            <span>070-123 45 67</span>
-          </div>
-          <div className="flex items-center gap-2 text-lime-400 font-medium mt-2">
-            <svg width="20" height="20" fill="none"><path d="M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm0 0l7 6 7-6" stroke="#22c55e" strokeWidth="1.5"/></svg>
-            <span>hej@dittbolag.se</span>
-          </div>
-        </div>
-        <div className="text-gray-400 text-xs mt-8">
-          <span>Vi svarar oftast inom 1 arbetsdag.</span>
-        </div>
-      </div>
+    <div className="w-full">
       {/* Formulär */}
       <form
         onSubmit={handleSubmit}
-        className="flex-1 bg-transparent p-4 sm:p-8 flex flex-col gap-5 justify-center w-full"
-        style={{ minWidth: 0, maxWidth: '100vw' }}
+        className="flex flex-col gap-5 w-full"
       >
         <h3 className="text-xl font-semibold text-white drop-shadow mb-2">
-          Boka gratis rådgivning
+          Fyll i formuläret
         </h3>
         <div className="flex flex-col gap-3">
           <input
@@ -158,6 +117,6 @@ export default function ContactForm() {
           Genom att skicka formuläret godkänner du vår hantering av personuppgifter.
         </div>
       </form>
-    </section>
+    </div>
   )
 }

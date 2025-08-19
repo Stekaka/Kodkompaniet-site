@@ -3,7 +3,11 @@
 import { Mail, Phone, MapPin, Clock, MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-export default function ContactFooter() {
+interface ContactFooterProps {
+  onOpenContact: () => void
+}
+
+export default function ContactFooter({ onOpenContact }: ContactFooterProps) {
   return (
     <footer id="contact" className="bg-gradient-to-b from-gray-900 to-black text-white py-16 px-6">
       <div className="max-w-6xl mx-auto">
@@ -114,7 +118,10 @@ export default function ContactFooter() {
             Låt oss diskutera dina idéer och se hur vi kan hjälpa dig att skapa något fantastiskt!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-black font-semibold py-3 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <button 
+              onClick={onOpenContact}
+              className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-black font-semibold py-3 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
               Boka gratis rådgivning
             </button>
             <a 

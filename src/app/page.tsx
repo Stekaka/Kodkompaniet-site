@@ -41,7 +41,7 @@ export default function Home() {
                  </Suspense>
                  
                  {/* Contact Footer */}
-                 <ContactFooter />
+                 <ContactFooter onOpenContact={() => setIsContactModalOpen(true)} />
                </div>
       
       {/* Contact Modal */}

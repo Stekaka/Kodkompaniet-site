@@ -35,7 +35,7 @@ body {
   height: 100vh;
 }
 
-/* Exempel i globals.css eller motsvarande */
+/* Mobiloptimeringar */
 @media (max-width: 600px) {
   .process-section {
     padding-top: 2rem !important;
@@ -66,6 +66,35 @@ body {
     margin: 1rem auto !important;
     border-radius: 1.25rem !important;
     padding: 1rem !important;
+  }
+  
+  /* Förbättra touch-upplevelse */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Förbättra scroll på mobil */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Förbättra text-rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Förbättra knappar på mobil */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Förbättra input-fält på mobil */
+  input, textarea {
+    font-size: 16px !important; /* Förhindrar zoom på iOS */
   }
 }
 

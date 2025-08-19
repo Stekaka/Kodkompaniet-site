@@ -104,10 +104,10 @@ export default function SpacePortalSectionHero({ onOpenContact }: SpacePortalSec
           pointerEvents: heroOpacity < 0.05 ? 'none' : 'auto',
         }}
       >
-        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight bg-gradient-to-br from-white to-green-400 bg-clip-text text-transparent drop-shadow-lg">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold tracking-tight bg-gradient-to-br from-white to-green-400 bg-clip-text text-transparent drop-shadow-lg px-4">
           Kod & Co.
         </h1>
-        <p className="text-xl md:text-2xl mt-6 h-10 font-mono text-green-400">
+        <p className="text-lg sm:text-xl md:text-2xl mt-4 sm:mt-6 h-10 font-mono text-green-400 px-4">
           <Typewriter
             words={[
               'Vi bygger hemsidor som imponerar.',
@@ -122,26 +122,27 @@ export default function SpacePortalSectionHero({ onOpenContact }: SpacePortalSec
             delaySpeed={2000}
           />
         </p>
-        <div className="flex gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 px-4 sm:px-0">
           <button
             onClick={onOpenContact}
             className="
-              px-7 py-3
+              px-6 sm:px-7 py-3
               rounded-full
               bg-gradient-to-r from-green-400 via-lime-400 to-green-500
-              text-black font-semibold text-lg
+              text-black font-semibold text-base sm:text-lg
               shadow-lg shadow-green-900/10
               transition
               hover:scale-105 hover:shadow-xl hover:from-green-300 hover:to-green-400
               focus:outline-none focus:ring-2 focus:ring-green-300
               active:scale-95
+              w-full sm:w-auto
             "
           >
             Boka gratis rådgivning
           </button>
           <a 
             href="#portfolio" 
-            className="border border-white hover:bg-white hover:text-black py-3 px-6 rounded-xl text-lg shadow-md transition inline-block"
+            className="border border-white hover:bg-white hover:text-black py-3 px-6 rounded-xl text-base sm:text-lg shadow-md transition w-full sm:w-auto text-center"
           >
             Se exempel
           </a>
@@ -166,25 +167,7 @@ export default function SpacePortalSectionHero({ onOpenContact }: SpacePortalSec
         </h2>
       </div> */}
 
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 10,
-          pointerEvents: 'none', // så att du inte blockerar scroll
-        }}
-      >
-        <div style={{ pointerEvents: 'auto' }}>
-          {/* Titel, text, knappar */}
-        </div>
-      </div>
+      {/* Denna div var onödig och kunde orsaka problem på mobil */}
     </section>
   )
 }

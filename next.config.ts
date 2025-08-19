@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  // output: "export", // Kommentera bort för Vercel
   images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
   // Konfiguration för domän

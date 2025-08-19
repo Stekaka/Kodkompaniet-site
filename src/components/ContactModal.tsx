@@ -81,7 +81,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl lg:max-w-5xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-4xl lg:max-w-5xl max-h-[98vh] sm:max-h-[95vh]"
               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking modal content
             >
               {/* Modal Content */}
@@ -95,25 +95,25 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 }}
               >
                 {/* Header */}
-                <div className="relative p-4 sm:p-6 lg:p-8 pb-4 sm:pb-6 border-b border-gray-600/30 bg-gradient-to-r from-gray-900/50 to-gray-800/50">
+                <div className="relative p-3 sm:p-4 lg:p-6 pb-3 sm:pb-4 border-b border-gray-600/30 bg-gradient-to-r from-gray-900/50 to-gray-800/50">
                   <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 sm:top-6 sm:right-6 p-2 rounded-full bg-gray-800/80 hover:bg-gray-700 transition-all duration-200 group backdrop-blur-sm border border-gray-600/30"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 rounded-full bg-gray-800/80 hover:bg-gray-700 transition-all duration-200 group backdrop-blur-sm border border-gray-600/30"
                     aria-label="Stäng"
                   >
-                    <X className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white transition-colors" />
                   </button>
                   
-                  <div className="text-center pr-12 sm:pr-16">
-                    <div className="inline-flex items-center gap-3 mb-3 sm:mb-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                        <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  <div className="text-center pr-10 sm:pr-12">
+                    <div className="inline-flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                       </div>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 bg-gradient-to-r from-white via-green-100 to-green-200 bg-clip-text text-transparent">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 bg-gradient-to-r from-white via-green-100 to-green-200 bg-clip-text text-transparent">
                       Boka gratis rådgivning
                     </h2>
-                    <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                       Låt oss diskutera ditt projekt över en kopp kaffe ☕ Vi hjälper dig att skapa något fantastiskt!
                     </p>
                   </div>
@@ -122,16 +122,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 {/* Contact Info & Form */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-0">
                   {/* Contact Info */}
-                  <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-green-900/15 via-green-800/10 to-transparent border-b lg:border-b-0 lg:border-r border-gray-600/30 relative overflow-hidden">
+                  <div className="p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-green-900/15 via-green-800/10 to-transparent border-b lg:border-b-0 lg:border-r border-gray-600/30 relative overflow-hidden">
                     {/* Decorative gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent pointer-events-none" />
                     
-                    <div className="relative space-y-4 sm:space-y-6">
+                    <div className="relative space-y-3 sm:space-y-4">
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-green-200 to-green-100 bg-clip-text text-transparent">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 bg-gradient-to-r from-green-200 to-green-100 bg-clip-text text-transparent">
                           Låt oss snacka webbutveckling! ☕
                         </h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        <p className="text-gray-300 leading-relaxed text-xs sm:text-sm">
                           Vi älskar att prata om design, teknik och digital strategi. 
                           Oavsett om du har en klar vision eller bara en känsla av vad du vill ha, 
                           så hjälper vi dig att förverkliga det.
@@ -184,7 +184,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                   
                   {/* Contact Form */}
-                  <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-900/30 to-gray-800/20 relative overflow-hidden">
+                  <div className="p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-gray-900/30 to-gray-800/20 relative overflow-hidden">
                     {/* Decorative gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-tl from-green-500/3 to-transparent pointer-events-none" />
                     

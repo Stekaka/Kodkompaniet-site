@@ -6,6 +6,7 @@ import SpacePortalSectionHero from '@/components/SpacePortalSectionHero'
 import HamburgerMenu from '@/components/HamburgerMenu'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import ContactModal from '@/components/ContactModal'
+import ContactFooter from '@/components/ContactFooter'
 
 // Lazy load non-critical components
 const PricingSection = lazy(() => import('@/components/PricingSection'))
@@ -35,10 +36,13 @@ export default function Home() {
         <Suspense fallback={<LoadingSpinner />}>
           <ContactSection onOpenContact={() => setIsContactModalOpen(true)} />
         </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <PortfolioSection />
-        </Suspense>
-      </div>
+                         <Suspense fallback={<LoadingSpinner />}>
+                   <PortfolioSection />
+                 </Suspense>
+                 
+                 {/* Contact Footer */}
+                 <ContactFooter />
+               </div>
       
       {/* Contact Modal */}
       <ContactModal 
